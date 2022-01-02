@@ -1,0 +1,69 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+//fonts
+@mixin typographyStyle($font, $size, $weight, $height, $color){
+    font-family: $font;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+    color: $color;
+}
+//icons
+@mixin typographyIcons($size, $color){
+    font-size: $size;
+    color: $color;
+}
+
+@mixin hexagonStyle($first, $second, $third, $fourth, $fifth, $sixth){
+clip-path: polygon($first, $second, $third, $fourth, $fifth, $sixth);
+}
+@mixin hexagonStyleSection($color, $point, $point2){
+    clip-path: polygon(50% 0, 100% 0, 100% 74%, $point, $point2, 0 0);
+    background: $color;
+}
+@mixin applayColor($icons){
+    @each $icon in $icons {
+        @if($icon == 'fa-facebook-f'){
+            & .#{$icon}{
+                color: $facebook-color;
+            }
+        }@else if($icon == 'fa-twitter'){
+            & .#{$icon}{
+                color: $twitter-color;
+            }
+        }
+        @else if($icon == 'fa-instagram'){
+            & .#{$icon}{
+                color: $instagram-color;
+            }
+        }@else if($icon == 'fa-behance'){
+            & .#{$icon}{
+                color: $behance-color;
+            }
+        }@else if($icon == 'fa-basketball-ball'){
+            & .#{$icon}{
+                color: $dribble-color;
+            }
+        }
+    }
+}
+@mixin responsive($device){
+    @if($device == "phone"){
+        @media (max-width: 575.98px) { 
+            @content
+         } 
+    }@else if($device == "land_phone"){
+        @media (max-width: 767.98px) { 
+            @content
+        }
+    }@else if($device == "tablet"){
+        @media (max-width: 991.98px) {
+            @content
+         }
+    }@else if($device == "small_desktop"){
+        @media (max-width: 1199.98px) { 
+            @content
+        }
+    }
+}
